@@ -1,0 +1,28 @@
+{
+  "name": "学习小助手",
+  "short_name": "学习助手",
+  "description": "AI赋能教育，覆盖小学至高中全学段。薄弱项分析、智能批改、试卷切题，陪伴孩子学业成长。",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F9FAFB",
+  "theme_color": "#4F46E5",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "utilities"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
