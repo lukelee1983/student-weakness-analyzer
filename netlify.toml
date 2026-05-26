@@ -1,0 +1,48 @@
+[build]
+  command = "npx vite build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# SPA路由回退：所有非文件请求都返回index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+  # 排除API路径，让Netlify Functions处理
+  # 注意：Netlify Functions自动映射 /.netlify/functions/<name> 路径
+
+# 将前端请求的 /api/baidu-token 重写到 Netlify Function
+[[redirects]]
+  from = "/api/baidu-token"
+  to = "/.netlify/functions/baidu-token"
+  status = 200
+
+# 将前端请求的 /api/baidu-ocr 重写到 Netlify Function
+[[redirects]]
+  from = "/api/baidu-ocr"
+  to = "/.netlify/functions/baidu-ocr"
+  status = 200
+
+# HTTP安全头
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Service Worker缓存策略
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# 静态资源长缓存
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
